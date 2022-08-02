@@ -1,0 +1,55 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #DDD;
+}
+
+.card {
+    --width: 5em;
+    --height: calc(var(--width) * 1.4);
+    width: var(--width);
+    height: var(--height);
+    background-color: white;
+    border: 1px solid black;
+    border-radius: .25em;
+    padding: .5em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+.pip {
+    grid-row: span;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+[data-value="2"] .pip:first-child {
+    grid-row-start: 1;
+    grid-column-start: 2;
+}
+[data-value="2"] .pip:second-child {
+    grid-row-start: 7;
+    grid-column-start: 2;
+}
+.pip.down {
+    grid-row-start: 3;
+}
+
+
+[data-suit="heart"] .pip,
+[data-suit="diamond"] .pip {
+    color: red;
+}
+[data-suit="heart"] .pip {
+    background-image: url("img/heart.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+[data-suit="spade"] .pip,
+[data-suit="club"] .pip {
+    color: black;
+}
