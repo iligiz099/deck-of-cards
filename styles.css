@@ -17,24 +17,25 @@ body {
     padding: .5em;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    position: relative;
 }
 .pip {
     grid-row: span;
     width: 100%;
     aspect-ratio: 1 / 1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 [data-value="2"] .pip:first-child {
     grid-row-start: 1;
     grid-column-start: 2;
 }
-[data-value="2"] .pip:second-child {
+[data-value="2"] .pip:nth-child(2){
     grid-row-start: 7;
     grid-column-start: 2;
-}
-.pip.down {
-    grid-row-start: 3;
 }
 
 
@@ -42,14 +43,26 @@ body {
 [data-suit="diamond"] .pip {
     color: red;
 }
-[data-suit="heart"] .pip {
-    background-image: url("img/heart.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
 
 [data-suit="spade"] .pip,
 [data-suit="club"] .pip {
     color: black;
+}
+[data-suit="heart"] .pip {
+    background-image: url("img/heart.svg");
+}
+
+.corner-number {
+    position: absolute;
+}
+
+.corner-number.top {
+    top: .25em;
+    left: .25em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+[data-suit="heart"].corner-number::after {
+    content: url("img/heart.svg");
 }
